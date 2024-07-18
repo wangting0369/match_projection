@@ -1,0 +1,21 @@
+{
+  "name": "matchprojection",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vant": "^4.9.1",
+    "vue": "^3.4.29"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "babel-plugin-component": "^1.1.1",
+    "babel-plugin-import": "^1.13.8",
+    "vite": "^5.3.1"
+  }
+}
