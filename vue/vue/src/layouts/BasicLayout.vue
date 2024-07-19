@@ -11,19 +11,14 @@
     </template>
   </van-nav-bar>
 
-  <div>
-    <template v-if="active === 'index'">
-      <Index/>
-    </template>
-    <template v-else-if="active === 'team'">
-      <Team/>
-    </template>
+  <div id="content">
+    <router-view></router-view>
   </div>
 
-  <van-tabbar v-model="active" @change="onChange">
-    <van-tabbar-item icon="home-o" name="index">主页</van-tabbar-item>
-    <van-tabbar-item icon="friends-o" name="team">队伍</van-tabbar-item>
-    <van-tabbar-item icon="setting-o" name="user">个人</van-tabbar-item>
+  <van-tabbar route>
+    <van-tabbar-item to="/" icon="home-o" >主页</van-tabbar-item>
+    <van-tabbar-item to="/team" icon="friends-o">队伍</van-tabbar-item>
+    <van-tabbar-item to="/user" icon="setting-o">个人</van-tabbar-item>
   </van-tabbar>
 
 </template>
@@ -33,11 +28,16 @@
 <script setup>
 import {ref} from "vue";
 import {showToast} from "vant";
-import Index from "../pages/Index.vue";
-import Team from "../pages/Team.vue";
+import {useRouter} from "vue-router";
 
-const onClickLeft = () => alert("左");
-const onClickRight = () => alert("右");
+//组合式api，不能使用router
+const router = useRouter()
+const onClickLeft = () => {
+  router.push('/')
+};
+const onClickRight = () => {
+  router.push('/search')
+};
 
 const active = ref("index");
 const onChange = (index) => showToast(`标签_${index}`)
